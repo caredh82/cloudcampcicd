@@ -27,7 +27,7 @@ def checkoutFromRepo(branch, repoURL, credentialsId) {
 }
 
 def buildDockerFile(tag, context=".", fileArg=""){
-    if (fileArg="") {
+    if (fileArg=="") {
         path=""
     }
     else{
