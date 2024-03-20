@@ -3,12 +3,12 @@
 node ('docker&&linux'){
     stage('Checkout') {
 
-        checkout scmGit{
+        checkout scmGit(
             branches:
             [[name: 'main']],
             extensions: [],
             userRemoteConfigs: [[url: 'https://github.com/caredh82/cloudcampcicd.git']]
-        }
+            )
     }
 
     stage('Build'){
