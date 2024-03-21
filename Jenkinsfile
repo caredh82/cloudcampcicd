@@ -3,9 +3,9 @@
 node ('docker&&linux'){
     checkoutFromRepo('main','https://github.com/caredh82/cloudcampcicd.git','git-credentials')
 
-    buildDockerFile('hello-world-python-ch:latest')
+    buildDockerFile('hello-world-python:ch.v.0.1')
 
-    pushDockerFile('us-east-1','851725481871.dkr.ecr.us-east-1.amazonaws.com','hello-world-python-ch','latest')
+    pushDockerFile('us-east-1','851725481871.dkr.ecr.us-east-1.amazonaws.com','hello-world-python','ch.v.0.1')
 }
 
 // Metodos
