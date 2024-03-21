@@ -1,13 +1,13 @@
 parameters = [
-    checkOutBranch: 'main',
-    checkOutRepoURL: 'https://github.com/caredh82/cloudcampcicd.git',
-    checkOutCredentialsId: 'git-credentials',
-    buildTag: 'hello-world-python',
-    builContext: '.',
-    buildFileArg: '',
-    pushRegion: 'us-east-1',
-    pushRegistryURL: '851725481871.dkr.ecr.us-east-1.amazonaws.com',
-    pushAppVersion: 'ch.v.0.2'
+    checkOutBranch: "main",
+    checkOutRepoURL: "https://github.com/caredh82/cloudcampcicd.git",
+    checkOutCredentialsId: "git-credentials",
+    buildTag: "hello-world-python",
+    builContext: ".",
+    buildFileArg: "",
+    pushRegion: "us-east-1",
+    pushRegistryURL: "851725481871.dkr.ecr.us-east-1.amazonaws.com",
+    pushAppVersion: "ch.v.0.2"
 ]
     //comment
     node ('docker&&linux'){
