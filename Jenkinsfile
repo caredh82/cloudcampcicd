@@ -3,9 +3,9 @@
 node ('docker&&linux'){
     checkoutFromRepo('main','https://github.com/caredh82/cloudcampcicd.git','git-credentials')
 
-    buildDockerFile('hello-world-phyton:latest')
+    buildDockerFile('hello-world-python-ch:latest')
 
-    //pushDockerImage()
+    pushDockerFile('us-east-1','851725481871.dkr.ecr.us-east-1.amazonaws.com','hello-world-python-ch','latest')
 }
 
 // Metodos
@@ -32,12 +32,13 @@ def buildDockerFile(tag, context=".", fileArg=""){
     }
 }
 
-def pushDockerImage(){
-    stage ('Push') {
-        sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 851725481871.dkr.ecr.us-east-1.amazonaws.com"
-        sh "docker tag hello-world-python:latest 851725481871.dkr.ecr.us-east-1.amazonaws.com/hello-world-python:3.0"
-        sh "docker tag hello-world-python:latest 851725481871.dkr.ecr.us-east-1.amazonaws.com/hello-world-python:latest"
-        sh "docker push --all-tags 851725481871.dkr.ecr.us-east-1.amazonaws.com/hello-world-python"
+def pushDockerFile(region, registryURL, appName, appVersion){
+     stage ('Push') {
+        sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${registryURL}"
+        sh "docker tag ${appName}:latest ${registryURL}/${appName}:${appVersion}"
+        sh "docker tag ${appName}:latest ${registryURL}/${appName}:latest"
+        sh "docker push --all-tags ${registryURL}/${appName}"
         
     }
+
 }
