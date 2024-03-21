@@ -32,7 +32,7 @@ def buildDockerFile(tag, context=".", fileArg=""){
     }
 }
 
-def dockerPush(region, registryURL, appName, appVersion){
+def pushDockerFile(region, registryURL, appName, appVersion){
      stage ('Push') {
         sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${registryURL}"
         sh "docker tag ${appName}:latest ${registryURL}/${appName}:${appVersion}"
